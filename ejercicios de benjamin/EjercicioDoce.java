@@ -3,9 +3,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class EjercicioOnce {
-    static float day = 86400;
-    static float hour = 3600;
-    static float minute = 60;
+    static float day = 86400.0f;
+    static float hour = 3600.0f;
+    static float minute = 60.0f;
 
     public static HashMap<String, Float> calculate(float time) {
         HashMap<String, Float> result = new HashMap<String, Float>();
