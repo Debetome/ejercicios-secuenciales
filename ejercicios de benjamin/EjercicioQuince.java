@@ -5,7 +5,7 @@ import java.util.Map;
 public class EjercicioQuince {
     public static float prompt(String text, Scanner sc) {
         float value;
-        System.out.println("[*] " + text + ": ");
+        System.out.print("[*] " + text + ": ");
         value = sc.nextFloat();
         return value;
     }
@@ -34,7 +34,7 @@ public class EjercicioQuince {
 
         System.out.println("\n[*] Porcentaje de Juan: " + pJuan + "%");
         System.out.println("[*] Porcentaje de Ruan: " + pRosa + "%");
-        System.out.println("[*] Total (en dolares): " + total);
+        System.out.println("\n[*] Total (en dolares): " + total);
     }
 
     public static void main(String[] args) {
@@ -42,8 +42,8 @@ public class EjercicioQuince {
         HashMap<String, Float> amounts = new HashMap<String, Float>();
         HashMap<String, Float> result;
 
-        amounts.put("dolares", prompt("Dolares (cantidad de Rosa)"));
-        amounts.put("soles", prompt("Soles (cantidad de Juan)"));
+        amounts.put("dolares", prompt("Dolares (cantidad de Rosa)", sc));
+        amounts.put("soles", prompt("Soles (cantidad de Juan)", sc));
 
         result = calculate(amounts);
         displayResult(result);
