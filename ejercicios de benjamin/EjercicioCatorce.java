@@ -5,6 +5,7 @@ import java.util.Scanner;
 import java.lang.Math;
 
 public class EjercicioCatorce {
+    static int day = 86400;
     static int hour = 3600;
     static int minute = 60;
 
@@ -36,9 +37,10 @@ public class EjercicioCatorce {
             total_seconds += time.get("minutes") * minute;
         }
 
-        int hours = (total_seconds / 2) / hour;
-        int minutes = (total_seconds - hours * hour) / minute;
-        int seconds = total_seconds - (hours * hour + minutes * minute);
+        int days = total_seconds / day;
+        int hours = (total_seconds - days * day) / hour;
+        int minutes = (total_seconds - (total_seconds / hour) * hour) / minute;
+        int seconds = total_seconds - ((total_seconds / hour) * hour + minutes * minute);
 
         result.put("hours", hours);
         result.put("minutes", minutes);
