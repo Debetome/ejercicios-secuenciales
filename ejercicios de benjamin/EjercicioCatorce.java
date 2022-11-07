@@ -37,10 +37,10 @@ public class EjercicioCatorce {
             total_seconds += time.get("minutes") * minute;
         }
 
-        int days = total_seconds / day;
-        int hours = (total_seconds - days * day) / hour;
-        int minutes = (total_seconds - (total_seconds / hour) * hour) / minute;
-        int seconds = total_seconds - ((total_seconds / hour) * hour + minutes * minute);
+        final int days = total_seconds / day;
+        final int hours = (total_seconds - days * day) / hour;
+        final int minutes = (total_seconds - (total_seconds / hour) * hour) / minute;
+        final int seconds = total_seconds - ((total_seconds / hour) * hour + minutes * minute);
 
         result.put("hours", hours);
         result.put("minutes", minutes);
@@ -50,9 +50,9 @@ public class EjercicioCatorce {
     } 
 
     public static void displayResult(HashMap<String, Integer> result) {
-        int hours = result.get("hours");
-        int minutes = result.get("minutes");
-        int seconds = result.get("seconds");
+        final int hours = result.get("hours");
+        final int minutes = result.get("minutes");
+        final int seconds = result.get("seconds");
 
         String time = hours + ":" + minutes + ":" + seconds;
 

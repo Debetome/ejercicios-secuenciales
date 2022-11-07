@@ -1,144 +1,51 @@
+import java.util.Scanner;
 import java.util.HashMap;
 import java.util.Map;
 
-class ArgumentHandler {
-  static String[] arguments = { 
-    "--metros",
-    "--pulgadas",
-    "--pies",
-    "--yardas"
-  };
-
-  public static HashMap<String, Float> handleArgs(String[] args) {
-    HashMap<String, Float> parsed = new HashMap<String, Float>();
-    boolean correct = false;
-
-    for (String op : arguments) {
-      for (int i=0; i<args.length; i++) {
-        if (!op.equals(args[i])) continue;
-
-        try {
-          parsed.put(args[i], Float.valueOf(args[i+1]));
-          correct = true;
-        } catch (Exception e) {
-          parsed.put(args[i], null);
-        }
-      }
+public class EjercicioQuince {
+    public static float prompt(String text, Scanner sc) {
+        float value;
+        System.out.println("[*] " + text + ": ");
+        value = sc.nextFloat();
+        return value;
     }
 
-    return (correct ? parsed : null);
-  }
-}
+    public static HashMap<String, Float> calculate(HashMap<String, Float> amounts) {
+        HashMap<String, Float> result = new HashMap<String, Float>();
 
-public class metros {
-  static float metro = 100.0f;
-  static float pulgada = 2.54f;
-  static float pie = pulgada * 12;
-  static float yarda = pie * 3;
+        final float juanAmount = amounts.get("soles") / 3.0f;
+        final float rosaAmount = amounts.get("dolares");
+        final float total = juanAmount + rosaAmount;
 
-  public static HashMap<String, String> getMeasurementValue(String key) {
-    HashMap<String, String> map = new HashMap<String, String>();
+        final float pJuan = juanAmount * 100 / total;
+        final float pRosa = rosaAmount * 100 / total;
 
-    switch (key) {
-      case "metros":
-        map.put("value", String.valueOf(metro));
-        map.put("mesure", "m");
-        break;
-      case "pulgadas":
-        map.put("value", String.valueOf(pulgada));
-        map.put("mesure", "in");
-        break;
-      case "yardas":
-        map.put("value", String.valueOf(yarda));
-        map.put("mesure", "yd");
-        break;
-      case "pies":
-        map.put("value", String.valueOf(pie));
-        map.put("mesure", "ft");
-        break;
+        result.put("rosa", pRosa);
+        result.put("juan", pJuan);
+        result.put("total", total);
 
-      default:
-        map = null;
-        break;
+        return result;
     }
 
-    return map;
-  }
+    public static void displayResult(HashMap<String, Float> result) {
+        float pRosa = result.get("rosa");
+        float pJuan = result.get("juan");
+        float total = result.get("total");
 
-  public static HashMap<String, String> performCalculation(HashMap<String, Float> args) {
-    HashMap<String, String> result = new HashMap<String, String>();
-    
-    HashMap<String, String> fromValueHash;
-    HashMap<String, String> toValueHash;
-
-    String fromMessure;
-    String toMessure;
-    float fromValue;
-    float toValue;
-    float calcResult;
-
-    String from = "";
-    String to = "";
-    float inputValue = 0.0f;
-
-    for (Map.Entry<String, Float> item : args.entrySet()) {
-      if (item.getValue() == null)  {
-        to = item.getKey();
-        continue;
-      }
-      from = item.getKey();
-      inputValue = item.getValue();
+        System.out.println("\n[*] Porcentaje de Juan: " + pJuan + "%");
+        System.out.println("[*] Porcentaje de Ruan: " + pRosa + "%");
+        System.out.println("[*] Total (en dolares): " + total);
     }
 
-    fromValueHash = getMeasurementValue(from.replace("-", ""));
-    toValueHash = getMeasurementValue(to.replace("-", ""));
+    public static void main(String[] args) {
+        final Scanner sc = new Scanner(System.in);
+        HashMap<String, Float> amounts = new HashMap<String, Float>();
+        HashMap<String, Float> result;
 
-    if (fromValueHash == null || toValueHash == null) return null;
+        amounts.put("dolares", prompt("Dolares (cantidad de Rosa)"));
+        amounts.put("soles", prompt("Soles (cantidad de Juan)"));
 
-    fromMessure = fromValueHash.get("mesure");
-    toMessure = toValueHash.get("mesure");
-
-    fromValue = Float.valueOf(fromValueHash.get("value"));
-    toValue = Float.valueOf(toValueHash.get("value"));
-
-    calcResult = (fromValue * inputValue) / toValue;
-    result.put("from", inputValue + fromMessure);
-    result.put("to", calcResult + toMessure);
-
-    return result;
-  }
-
-  public static void displayResult(HashMap<String, Float> result) {
-    if (result == null) return;
-
-    String from = result.get("from");
-    String to = result.get("to");
-    
-    System.out.println("\n[*] From: " + from);
-    System.out.println("[*] To: " + to);
-  }
-
-  public static void printUsage(String fileName) {
-      System.out.println("\n[*] Usage: java " + fileName + " --metros/pulgadas/yardas/pies [AMOUNT] --metros/pulgadas/yardas/pies");
-      System.out.println("[*] Example (for converting from metros to pies): java " + fileName + " --metros 3 --pies\n");
-  }
-
-  public static void main(String[] args) {
-    HashMap<String, Float> parsed = ArgumentHandler.handleArgs(args);
-    HashMap<String, String> result;
-    
-    if (parsed == null || parsed.values().size() == 0) {
-      printUsage("metros");
-      System.exit(-1);
-    } 
-
-    result = performCalculation(parsed);
-    if (result == null) {
-      System.out.println("\n[-] Something went wrong :CCC ....");
-      printUsage("metros");
-      System.exit(-1);
+        result = calculate(amounts);
+        displayResult(result);
     }
-
-    displayResult(result);
-  }
 }
