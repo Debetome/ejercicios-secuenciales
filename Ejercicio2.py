@@ -3,17 +3,13 @@
 print("Haciendo converciones...")
 
 met = int(input("ingrese la cantidad en metros: "))
-cent = met * 100
-print("la cantidad en centimetros es: ",cent)
+ centi = met * 100 
+ pulga = centi / 2.54
+ pies = pulga / 12
+ yardas = pies / 3
 
-pie = int(input("ingrese la cantidad en pies: "))
-pulg = pie * 12 / 1
-print("la cantidad en pulgadas es: ",pulg)
-
-yard = int(input("ingrese la cantidad en yardas: "))
-pies = yard * 3 / 1
-print("la cantidad en pies es:",pies)
-
-pulga = int(input("ingrese la cantidad en pulgadas: "))
-centi = pulga * 2.54 / 1
-print("la cantidad en centimetros es: ",centi)
+ print(("Centimetros: ",format(centi,".2f")),"cm")
+ print(("Pulgadas: ",format(pulga,".2f")),"in")
+ print(("Pies: ",format(pies,".2f")),"ft")
+ print(("Yardas: ",format(yardas,".2f")),"yd")
+ 
