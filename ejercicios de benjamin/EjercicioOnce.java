@@ -15,8 +15,8 @@ public class EjercicioDies {
         String[] firstSplitted = numbers.get("first").split("");
         String[] secondSplitted = numbers.get("second").split("");
 
-        newNumbers.put("first", firstSplitted[2] + secondSplitted[1] + firstSplitted[0]);
-        newNumbers.put("second", secondSplitted[2] + firstSplitted[1] + secondSplitted[0]);
+        newNumbers.put("first", secondSplitted[2] + firstSplitted[1] + secondSplitted[0]);
+        newNumbers.put("second", firstSplitted[2] + secondSplitted[1] + firstSplitted[0]);
 
         return newNumbers;
     }
