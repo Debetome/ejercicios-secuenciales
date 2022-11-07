@@ -5,8 +5,8 @@ var = int(input("ingrese numero de varones: "))
 muj = int(input("ingrese numero de mujeres: "))
 resultado = var + muj
 
-phombre = var * resultado /100
-pmujer = muj * resultado / 100
+phombre = var * 100 / resultado
+pmujer = muj * 100 / resultado
 print("El porcentaje de varones seria: ",phombre)
 print("El porcentaje de mujeres seria: ",pmujer)
 
