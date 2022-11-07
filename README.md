@@ -7,7 +7,6 @@ En este repositorio presentamos una serie de 15 ejercicios secuenciales de lógi
 |Nombre|Correo|Lenguaje|
 |------|------|--------|
 |Prospero Angel|angelprosperomitma@hotmail.com|Python|
-|Lozano Odín|odinblaslozano.11@gmail.com|Ruby|
-|Torres Derek|magregory@tutanota.com|Java|
+|Lozano Odín|odinblaslozano.11@gmail.com|Ruby/Java|
 
 
