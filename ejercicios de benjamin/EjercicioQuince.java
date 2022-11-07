@@ -33,7 +33,7 @@ public class EjercicioQuince {
         float total = result.get("total");
 
         System.out.println("\n[*] Porcentaje de Juan: " + pJuan + "%");
-        System.out.println("[*] Porcentaje de Ruan: " + pRosa + "%");
+        System.out.println("[*] Porcentaje de Rosa: " + pRosa + "%");
         System.out.println("\n[*] Total (en dolares): " + total);
     }
 
